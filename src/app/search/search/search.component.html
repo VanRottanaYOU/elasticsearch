@@ -1,0 +1,17 @@
+<div>
+    <input type="text" (keyup)="search($event)" placeholder="Entrer un libelle de produit" class="input">
+</div>
+<div *ngFor="let produit of produits" style="margin-top:20px">
+    <div>
+        <label>Libelle: </label> {{produit._source.libelle}}
+    </div>
+    <div>
+        <label>prix: </label> {{produit._source.prix}}
+    </div>
+    <div>
+        <label>category: </label> {{produit._source.category}}
+    </div>
+    <div>
+        <label>Published: </label> {{produit._source.published}}
+    </div>
+</div>

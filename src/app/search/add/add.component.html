@@ -1,0 +1,29 @@
+<div class="row">
+  <h3>Elasticsearch server status: {{status}}</h3>
+</div>
+<br/>
+<div class="row">
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <label class="control-label" for="index">Index</label>
+    <input type="text" class="form-control" id="index" formControlName="index">
+    <br/>
+    <div class="panel panel-primary">
+      <div class="panel-heading my-4">Produit : </div>
+      <div class="panel-body">
+        <label class="control-label" for="id">ID</label>
+        <input type="number" class="form-control" id="id" formControlName="id">
+        <br/>
+        <label class="control-label" for="libelle">Libelle</label>
+        <input type="text" class="form-control" id="libelle" formControlName="libelle">
+        <br/>
+        <label class="control-label" for="prix">Prix</label>
+        <input type="number" class="form-control" id="prix" formControlName="prix">
+        <br/>
+        <label class="control-label" for="category">Category</label>
+        <input type="text" class="form-control" id="category" formControlName="category">
+      </div>
+    </div>
+    <button type="submit" [disabled]="!isConnected" class="my-4 btn btn-primary pull-right">Submit</button>
+  </form>
+</div>
+
