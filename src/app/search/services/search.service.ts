@@ -139,14 +139,31 @@ export class SearchService {
       //     },
       //   }
       // },
-      {"query":{
-        "bool": {
-            "should": [
-                { 'match_phrase_prefix': { ['libelle']: _queryText }},
-                { 'match_phrase_prefix': { ['category']: _queryText }}
-            ]
-      }}},
-      '_source': ['libelle', 'category']
+      // {"query":{
+      //   "bool": {
+      //       "should": [
+      //           { 'match_phrase_prefix': { ['libelle']: _queryText }},
+      //           { 'match_phrase_prefix': { ['category']: _queryText }}
+      //       ]
+      // }}},
+      {
+        "query": {
+          "multi_match": {
+            "query": _queryText,
+            "type": "cross_fields",
+            "fields": ["libelle", "category"],
+            "operator": "and"
+          }
+        }
+      },
+      // {
+      //   "query": {
+      //     "query_string": {
+      //       "query": _queryText,
+      //     }
+      //   }
+      // }
+      // '_source': ['libelle', 'category']
     });
   }
 
