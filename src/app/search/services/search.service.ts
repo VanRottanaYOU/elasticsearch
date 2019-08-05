@@ -131,13 +131,21 @@ export class SearchService {
       index: _index,
       type: _type,
       filterPath: ['hits.hits._source', 'hits.total', '_scroll_id'],
-      body: {
-        'query': {
-          'match_phrase_prefix': {
-            [_field]: _queryText,
-          }
-        }
-      },
+      body: 
+      // {
+      //   'query': {
+      //     'match_phrase_prefix': {
+      //       [_field]: _queryText,
+      //     },
+      //   }
+      // },
+      {"query":{
+        "bool": {
+            "should": [
+                { 'match_phrase_prefix': { ['libelle']: _queryText }},
+                { 'match_phrase_prefix': { ['category']: _queryText }}
+            ]
+      }}},
       '_source': ['libelle', 'category']
     });
   }
